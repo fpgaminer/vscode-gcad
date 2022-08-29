@@ -1,0 +1,102 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "GCad",
+	"patterns": [
+		{ "include": "#keywords" },
+		{ "include": "#strings" },
+		{ "include": "#comments" },
+		{ "include": "#constants" },
+		{ "include": "#punctuation" },
+		{ "include": "#variables" }
+	],
+	"repository": {
+		"comments": {
+			"patterns": [
+				{
+					"name": "comment.line.double-slash.gcad",
+					"match": "\\s*//.*"
+				}
+			]
+		},
+		"keywords": {
+			"patterns": [
+				{
+					"name": "keyword.control.gcad",
+					"match": "\\b(if|while|for|return)\\b"
+				},
+				{
+					"name": "keyword.other.gcad",
+					"match": "\\b(in)\\b"
+				},
+				{
+					"name": "keyword.operator.assingment.gcad",
+					"match": "\\b(=)\\b"
+				},
+				{
+					"name": "keyword.operator.math.gcad",
+					"match": "(([+%]|(\\*(?!\\w)))(?!=))|(-(?!>))|(/(?!/))"
+				}
+			]
+		},
+		"strings": {
+			"name": "string.quoted.single.gcad",
+			"begin": "'",
+			"end": "'",
+			"patterns": [
+				{
+					"name": "constant.character.escape.gcad",
+					"match": "\\\\."
+				}
+			]
+		},
+		"constants": {
+			"patterns": [
+				{
+					"name": "constant.numeric.decimal.gcad",
+					"match": "\\b\\d[\\d_]*(\\.?)[\\d_]*(in|ft|yd|mm|cm|m)?\\b",
+					"captures": {
+						"1": {
+							"name": "punctuation.separator.dot.decimal.gcad"
+						},
+						"2": {
+							"name": "keyword.other.unit.gcad"
+						}
+					}
+				}
+			]
+		},
+		"punctuation": {
+			"patterns": [
+				{
+					"name": "punctuation.comma.gcad",
+					"match": ","
+				},
+				{
+					"name": "punctuation.brackets.curly.gcad",
+					"match": "[{}]"
+				},
+				{
+					"name": "punctuation.brackets.round.gcad",
+					"match": "[()]"
+				},
+				{
+					"name": "punctuation.semi.gcad",
+					"match": ";"
+				},
+				{
+					"name": "punctuation.brackets.square.gcad",
+					"match": "[\\[\\]]"
+				}
+			]
+		},
+		"variables": {
+			"patterns": [
+				{
+					"name": "variable.other.gcad",
+					"match": "\\b[a-z0-9_]+\\b"
+				}
+			]
+		}
+	},
+	"scopeName": "source.gcad"
+}

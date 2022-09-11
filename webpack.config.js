@@ -4,7 +4,6 @@
 
 const path = require('path');
 const webpack = require('webpack');
-const WasmPackPlugin = require('@wasm-tool/wasm-pack-plugin');
 
 //@ts-check
 /** @typedef {import('webpack').Configuration} WebpackConfig **/
@@ -48,21 +47,16 @@ const extensionConfig = {
   },
 };
 
-const wasmConfig = {
-	entry: './gcad-webview/index.js',
-    output: {
-        path: path.resolve(__dirname, 'dist'),
-        filename: 'app.js',
-    },
-    plugins: [
-      new WasmPackPlugin({
-          crateDirectory: path.resolve(__dirname, "gcad-webview"),
-      })
-    ],
-    mode: 'development',
-    experiments: {
-        asyncWebAssembly: true
-   }
+const appConfig = {
+	entry: './src/app.js',
+  output: {
+      path: path.resolve(__dirname, 'dist'),
+      filename: 'app.js',
+  },
+  mode: 'development',
+  experiments: {
+      asyncWebAssembly: true
+  }
 };
 
-module.exports = [ extensionConfig, wasmConfig ];
+module.exports = [ extensionConfig, appConfig ];
